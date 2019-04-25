@@ -1,1 +1,1 @@
-module.exports.HttpClient = require('./http-client');
+module.exports = require('./http-client');

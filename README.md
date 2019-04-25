@@ -1,13 +1,13 @@
 # Install
 
 ```
-npm install @yottabrain\thin-http-client
+npm install @yottabrain/thin-http-client
 ```
 
 # Usage
 
 ```
-const httpClient = require('thin-http-client');
+const HttpClient = require('@yottabrain/thin-http-client');
 
 const ENDPOINT = "https://example.com/api/someapi";
 
@@ -42,5 +42,11 @@ let options = {
     auth: 'user1:pwd123'
 }
 let res = await new HttpClient(options).get(ENDPOINT);
+
+# Using promise instead of await
+new HttpClient().get(ENDPOINT).then(res => {
+    
+});
+
 
 ```
