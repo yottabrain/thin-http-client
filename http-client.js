@@ -11,6 +11,11 @@ const DEFAULT_ENCODING = 'utf8';
 module.exports = class HttpClient {
     constructor(options) {
         this.options = options || {};
+        this.debug = false;
+    }
+
+    debug(isDebug) {
+      this.debug = isDebug;
     }
     
     setEncoding(encoding) {
@@ -26,13 +31,13 @@ module.exports = class HttpClient {
     async request(endpoint, options, postBody) {
         // Pass endpoint directly e.g. http.request(endpoint, options, cb) once nodejs upgraded to v10
         this.options = {...url.parse(endpoint), ...this.options, ...options};
-        console.log('options:', this.options);
+        if (this.debug) console.log('options:', this.options);
 
         return new Promise((resolve, reject) => {
             let HTTP = endpoint.startsWith('https') ? https : http;
             
             const req = HTTP.request(this.options, res => {
-                console.log('statusCode: ', res.statusCode);
+              if (this.debug) console.log('statusCode: ', res.statusCode);
 
                 if (res.statusCode != 200) {
                   //reject(new Error(res.statusCode + ' ' + res.statusMessage));
@@ -46,11 +51,11 @@ module.exports = class HttpClient {
                 });
                 
                 res.on('end', () => {
-                    console.log("Response:", body);
+                  if (this.debug) console.log("Response:", body);
                     resolve(new HttpResponse(res, body));
                 });
             }).on('error', err => {
-                console.error(`Error in API`, err);
+              if (this.debug) console.error(`Error in API`, err);
                 reject(err);
             });
 
