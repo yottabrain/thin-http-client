@@ -1,0 +1,27 @@
+{
+  "name": "@yottabrain/thin-http-client",
+  "version": "0.1.0",
+  "description": "A wrapper around NodeJS http/https module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yottabrain",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yottabrain/thin-http-client.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "http",
+    "http-client",
+    "get",
+    "post",
+    "request"
+  ],
+  "bugs": {
+    "url": "https://github.com/yottabrain/thin-http-client/issues"
+  },
+  "homepage": "https://github.com/yottabrain/thin-http-client#readme"
+}
