@@ -1,18 +1,24 @@
-# Install
+# thin-http-client
+
+- It is wrapper around the default node libraries http and https
+- As name says it is a thin and it does not have any dependencies
+- Can be used with async/await or promise
+
+## Install
 
 ```
 npm install @yottabrain/thin-http-client
 ```
 
-# Usage
+## Usage
 
-## Include HttpClient
+### Include HttpClient
 
 ``` javascript
 const HttpClient = require('@yottabrain/thin-http-client');
 ```
 
-## Invoke GET method
+### Invoke GET method
 
 ``` javascript
 const ENDPOINT = "https://example.com/api/someapi";
@@ -20,14 +26,14 @@ const ENDPOINT = "https://example.com/api/someapi";
 let res = await new HttpClient().get(ENDPOINT);
 ```
 
-## Invoke Post method
+### Invoke Post method
 
 ``` javascript
 let body = {"key": "value"};
 let res = await new HttpClient().post(ENDPOINT, body);
 ```
 
-## Response 
+### Response 
 ``` javascript
 # Check http status code is 200
 console.log(res.success());
@@ -42,13 +48,13 @@ console.log(res.json());
 console.log(res.response());
 ```
 
-## Call API with Encoding and headers
+### Call API with Encoding and headers
 
 ``` javascript
 let res = await new HttpClient().setEncoding('UTF-8').setHeaders({ "Authorization": token }).get(ENDPOINT);
 ```
 
-## Set HTTP options
+### Set HTTP options
 
 You can set the node module http/https options in constructor.
 Refer this link for the list of options
@@ -61,7 +67,7 @@ let options = {
 let res = await new HttpClient(options).get(ENDPOINT);
 ```
 
-## Using promise instead of await
+### Using promise instead of await
 
 ``` javascript
 new HttpClient().get(ENDPOINT).then(res => {
@@ -69,7 +75,7 @@ new HttpClient().get(ENDPOINT).then(res => {
 });
 ```
 
-## Enable debug logs
+### Enable debug logs
 
 ``` javascript
 await new HttpClient().debug(true).get(ENDPOINT);
