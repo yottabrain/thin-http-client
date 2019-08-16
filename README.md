@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yottabrain/thin-http-client.svg?branch=master)](https://travis-ci.org/yottabrain/thin-http-client) [![version](https://img.shields.io/npm/v/@yottabrain/thin-http-client.svg)](https://www.npmjs.com/package/@yottabrain/thin-http-client) [![Coverage Status](https://coveralls.io/repos/github/yottabrain/thin-http-client/badge.svg)](https://coveralls.io/github/yottabrain/thin-http-client)
+
 # thin-http-client
 
 - It is wrapper around the default node libraries http and https
@@ -15,7 +17,7 @@ npm install @yottabrain/thin-http-client
 ### Include HttpClient
 
 ``` javascript
-const HttpClient = require('@yottabrain/thin-http-client');
+const { HttpClient } = require('@yottabrain/thin-http-client');
 ```
 
 ### Invoke GET method
