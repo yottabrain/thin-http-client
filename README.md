@@ -17,7 +17,7 @@ npm install @yottabrain/thin-http-client
 ### Include HttpClient
 
 ``` javascript
-const HttpClient = require('@yottabrain/thin-http-client');
+const { HttpClient } = require('@yottabrain/thin-http-client');
 ```
 
 ### Invoke GET method

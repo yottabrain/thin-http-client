@@ -1,4 +1,6 @@
-module.exports = class HttpResponse {
+'use strict'
+
+module.exports.HttpResponse = class HttpResponse {
   constructor (httpResponse, body) {
     this.httpResponse = httpResponse
     this.body = body

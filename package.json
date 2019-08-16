@@ -4,7 +4,9 @@
   "description": "A wrapper around NodeJS http/https module",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter mochawesome"
+    "test": "mocha",
+    "test-report": "nyc --reporter=html --reporter=text mocha --reporter mochawesome",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "author": "yottabrain",
   "license": "MIT",
@@ -26,8 +28,12 @@
   "homepage": "https://github.com/yottabrain/thin-http-client#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
+    "chai-as-promised": "^7.1.1",
+    "coveralls": "^3.0.6",
+    "mocha": "^6.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "mochawesome": "^3.1.2",
-    "nock": "^10.0.6"
+    "nock": "^10.0.6",
+    "nyc": "^14.1.1"
   }
 }

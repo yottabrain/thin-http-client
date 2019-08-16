@@ -1,1 +1,1 @@
-module.exports = require('./http-client')
+module.exports.HttpClient = require('./http-client').HttpClient

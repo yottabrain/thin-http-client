@@ -4,18 +4,19 @@ const https = require('https')
 const http = require('http')
 const querystring = require('querystring')
 const url = require('url')
-const HttpResponse = require('./http-response')
+const { HttpResponse } = require('./http-response')
 
 const DEFAULT_ENCODING = 'utf8'
 
-module.exports = class HttpClient {
+module.exports.HttpClient = class HttpClient {
   constructor (options) {
     this.options = options || {}
-    this.debug = false
+    this.isDebug = false
   }
 
   debug (isDebug) {
-    this.debug = isDebug
+    this.isDebug = isDebug
+    return this
   }
 
   setEncoding (encoding) {
@@ -31,13 +32,13 @@ module.exports = class HttpClient {
   async request (endpoint, options, postBody) {
     // Pass endpoint directly e.g. http.request(endpoint, options, cb) once nodejs upgraded to v10
     this.options = { ...url.parse(endpoint), ...this.options, ...options }
-    if (this.debug) console.log('options:', this.options)
+    if (this.isDebug) console.log('options:', this.options)
 
     return new Promise((resolve, reject) => {
       const HTTP = endpoint.startsWith('https') ? https : http
 
       const req = HTTP.request(this.options, res => {
-        if (this.debug) console.log('statusCode: ', res.statusCode)
+        if (this.isDebug) console.log('statusCode: ', res.statusCode)
 
         if (res.statusCode !== 200) {
           // reject(new Error(res.statusCode + ' ' + res.statusMessage));
@@ -51,11 +52,11 @@ module.exports = class HttpClient {
         })
 
         res.on('end', () => {
-          if (this.debug) console.log('Response:', body)
+          if (this.isDebug) console.log('Response:', body)
           resolve(new HttpResponse(res, body))
         })
       }).on('error', err => {
-        if (this.debug) console.error(`Error in API`, err)
+        if (this.isDebug) console.error(`Error in API`, err)
         reject(err)
       })
 
