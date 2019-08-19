@@ -1,6 +1,6 @@
 {
   "name": "@yottabrain/thin-http-client",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "A wrapper around NodeJS http/https module",
   "main": "index.js",
   "scripts": {
